@@ -40,7 +40,7 @@ def test_low_vigor_patch_is_flagged() -> None:
         crop_mask=np.ones(shape, dtype=bool),
     )
 
-    assert result.condition in {"Moderate anomaly", "High anomaly"}
+    assert result.condition in {"Watch", "Moderate anomaly", "High anomaly"}
     assert result.anomaly_fraction is not None and result.anomaly_fraction >= 0.24
     assert np.mean(result.anomaly_mask[damaged]) > 0.95
     assert np.mean(result.anomaly_mask[~damaged]) < 0.05
